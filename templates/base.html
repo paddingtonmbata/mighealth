@@ -8,38 +8,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Governing migration & health in Africa</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static "mighealth/styles.css" %}">
   </head>
-  <body class="text-white">
-    <header class=" body-font border-b border-gray-200 bg-cyan-950">
-      <div class="w-full flex flex-row p-5 justify-between align-middle">
-        <div class="flex flex-row align-center">
-          <img src="{% static "mighealth/mighealth_logo.png" %}" alt="logo">
+  <body class="text-cyan-950 bg-violet-300">
+    <header class="bg-cyan-950 rounded-b-xl">
+      <div class="w-full flex bg-violet-300 flex-row p-5 justify-between items-center rounded-b-xl">
+        <div class="flex flex-row align-center">          
           <a
-            class="flex title-font font-medium items-center  mb-4 md:mb-0"
+            class="flex title-font font-bold items-center  mb-4 md:mb-0"
             href="{% url "home" %}"
           >
-            <span class="ml-3 text-xl"
+          <img class="size-16" src="{% static "mighealth/mighealth_logo.png" %}" alt="logo">
+            <span class="ml-3 text-3xl"
               >Governing migration & health in Africa
             </span>
           </a>
         </div>        
-        <button>Upload documents</button>        
+        <button class="bg-indigo-700 text-white rounded-xl p-2 hover:bg-white hover:text-indigo-700 h-fit font-bold text-sm">Upload documents</button>        
       </div>
 
-      <nav
-        class="md:ml-auto flex flex-wrap items-center text-base justify-center"
-      >
-        <a class="mr-5 hover:">About</a>
-        <a class="mr-5 hover:">Global governance</a>
-        <a class="mr-5 hover:">Continental governance</a>
-        <a class="mr-5 hover:">Countries</a>
-        <a class="mr-5 hover:">Contributers</a>
-        <a class="mr-5 hover:">How to get involved</a>
-        <a class="mr-5 hover:">Partners</a>
-        <a class="mr-5 hover:">Contact</a>
-      </nav>
+      <nav class="md:ml-auto flex flex-wrap items-center justify-center text-sm bg-cyan-950 rounded-b-xl text-white py-2">
+        <a class="mr-5 cursor-pointer font-bold hover:text-indigo-700" href="{% url "about" %}">About</a>
+        <div class="relative mr-5">
+            <a class="cursor-pointer font-bold hover:text-indigo-700">Global governance <i class="fa-solid fa-caret-down"></i></a>
+            <div class="absolute hidden bg-white w-40 py-2 rounded-md shadow-lg max-h-96 overflow-y-auto" aria-label="submenu">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 1</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 2</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 3</a>
+            </div>
+        </div>
+        <a class="mr-5 cursor-pointer font-bold hover:text-indigo-700">Continental governance</a>
+        <div class="relative mr-5">
+            <a class="cursor-pointer font-bold hover:text-indigo-700">Countries <i class="fa-solid fa-caret-down"></i></a>
+            <div class="absolute hidden bg-white w-40 py-2 rounded-md shadow-lg max-h-96 overflow-y-auto" aria-label="submenu">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Country 1</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Country 2</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Country 3</a>
+            </div>
+        </div>
+        <a class="mr-5 cursor-pointer font-bold hover:text-indigo-700">Contributors</a>
+        <a class="mr-5 cursor-pointer font-bold hover:text-indigo-700">How to get involved</a>
+        <a class="mr-5 cursor-pointer font-bold hover:text-indigo-700">Partners</a>
+        <a class="mr-5 cursor-pointer font-bold hover:text-indigo-700">Contact</a>
+    </nav>
+
     </header>
     {% block content %} {% endblock %}
     <footer></footer>
+    <script>
+    // JavaScript to show/hide dropdown menu
+    document.querySelectorAll('.relative').forEach((element) => {
+        const parent = element;
+        const menu = element.querySelector('.hidden');
+
+        parent.addEventListener('mouseenter', () => {
+            menu.classList.remove('hidden');
+        });
+
+        parent.addEventListener('mouseleave', () => {
+            menu.classList.add('hidden');
+        });
+    });
+</script>
+
   </body>
 </html>
